@@ -12,7 +12,7 @@ const handler = (request, reply) => {
 const server = new Hapi.Server();
 server.connection({
   host: 'localhost',
-  port: config.get('port')
+  port: process.env.PORT || 8080
 });
 
 // Add the route
