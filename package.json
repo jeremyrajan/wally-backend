@@ -1,0 +1,20 @@
+{
+  "name": "wallpaper-backend",
+  "version": "1.0.0",
+  "description": "CLI backend to talk to pixabay",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": "6.9.2"
+  },
+  "author": "Jeremy",
+  "license": "MIT",
+  "dependencies": {
+    "config": "^1.25.1",
+    "hapi": "^16.1.0",
+    "redis": "^2.6.5",
+    "request": "^2.79.0"
+  }
+}
