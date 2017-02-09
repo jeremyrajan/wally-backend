@@ -5,7 +5,7 @@ const utils = require('./utils');
 let PHOTOS_CACHE = [];
 
 const handler = (request, reply) => {
-  const photo = utils.getWallpaper(PHOTOS_CACHE);
+  const photo = utils.getWallpaper(PHOTOS_CACHE.hits || PHOTOS_CACHE);
   return reply(photo);
 };
 

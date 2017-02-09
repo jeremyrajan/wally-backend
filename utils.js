@@ -7,7 +7,6 @@ const API_KEY = process.env.API_KEY;
 
 module.exports = {
   init() {
-    // redisCache.flushRedis();
     return redisCache.getValue('photos')
       .then(photos => {
         if (!photos) {

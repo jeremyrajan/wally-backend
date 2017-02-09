@@ -1,6 +1,14 @@
 const redis = require('redis');
+const config = require('config');
 
-const client = redis.createClient();
+const redisOptions = {
+  host: process.env.REDIS_HOST || '127.0.0.1',
+  password: process.env.REDIS_PASSWORD,
+  port: config.get('redis.port')
+};
+
+const client = redis.createClient(redisOptions);
+
 client.on("error", (err) => {
   console.log(err);
 });
