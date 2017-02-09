@@ -22,16 +22,29 @@ server.route({
   handler: handler
 });
 
-utils.init()
+server.register(require('hapi-pino'), (err) => {
+  const logger = server.app.logger;
+
+  if (err) {
+    logger.error(err);
+    process.exit(1)
+  }
+
+  // the logger is available in server.app
+  logger.info('Pino is registered')
+
+  utils.init()
   .then((photos) => {
     PHOTOS_CACHE = JSON.parse(photos);
     server.start((err) => {
       if (err) {
-        throw err;
+        logger.error(err);
+        process.exit(1);
       }
-      console.log('Server running at:', server.info.uri);
+      logger.info('Server running at:', server.info.uri);
     });
   })
   .catch((err) => {
-    return console.error(err);
+    logger.error(err);
   });
+});
