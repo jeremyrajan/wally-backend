@@ -51,7 +51,7 @@ module.exports = {
   checkExpired(photos) {
     return this.getRequest(photos[0].fullHDURL)
       .then(() => photos)
-      .catch(() => null);
+      .catch(() => this.getViaAPI()); // if its expired then get again.
   },
 
   getWallpaper(photos) {
