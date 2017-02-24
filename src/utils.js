@@ -65,5 +65,12 @@ module.exports = {
   currentDate() {
     const date = new Date();
     return(date.toJSON().slice(0,10).replace(new RegExp("-", 'g'),"/" ).split("/").reverse().join("/"));
+  },
+
+  /**
+   * A single endpoint to get all images.
+   */
+  getAllImages() {
+
   }
 };

@@ -22,6 +22,21 @@ server.route({
   handler: handler
 });
 
+// commond route to get the all the images (redis first and then api)
+server.route({
+  method: 'GET',
+  path: '/images',
+  handler: (request, reply) => {
+      const limit = request.query.limit || 50 ;
+      const photos = PHOTOS_CACHE.hits || PHOTOS_CACHE
+      if (!photos) {
+      return reply('');
+    }
+
+    reply(photos.slice(0, Number(limit)));
+    }
+});
+
 server.register(require('hapi-pino'), (err) => {
   const logger = server.app.logger;
 
